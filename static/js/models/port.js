@@ -1,6 +1,24 @@
-class Port extends BaseModel { // eslint-disable-line no-unused-vars, no-undef
-  constructor() {
-    super('ports')
-    this.fields = this.fields.concat(['name', 'country', 'address', 'erdpou'])
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const portSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  country: {
+    type: String,
+    required: true
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  erdpou: {
+    type: String,
+    unique: true,
+    required: true
   }
-}
+});
+
+module.exports = mongoose.model('Port', portSchema, 'port')
