@@ -1,0 +1,38 @@
+extends ../layout.pug
+
+block prepend styles
+  link(rel='stylesheet' href='//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css')
+
+block content
+  div(class='breadcrumb')
+    li= title
+  form(id='shipInPort-add-form' name='shipInPort-add-form' class='form-inline' action='')
+
+    div(class='form-group')
+      div(class='col-md-3')
+        label(for='name') ShipId
+      div(class='col-md-9')
+        input(id='shipId' name='shipId' value='' class='form-control')
+
+    div(class='form-group')
+      div(class='col-md-3')
+        label(for='name') PortId
+      div(class='col-md-9')
+        input(id='portId' name='portId' value='' class='form-control')   
+
+    div(class='form-group')
+      div(class='col-md-12')
+        button(type='submit' class='btn btn-primary') Create
+
+
+  form(id='shipInPort-update-form' name='shipInPort-update-form' class='form-inline' action='')      
+    div(class='form-group')
+      div(class='col-md-12')
+        button(type='submit' class='btn btn-secondary') Update
+
+    div.list-wrapper
+      table(id='shipInPort-list')
+block append scripts
+  script(src='/static/js/models/shipInPort.js')
+  script(src='//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
+  script(src='/static/js/views/shipInPort.js')
