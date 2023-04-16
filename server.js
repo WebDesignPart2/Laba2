@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const flash = require('connect-flash')
 const config = require('./config')
 const session = require('express-session')
+const db = require('./db')
 
 const appLocalsStringsMiddleware = require('./middlewares/app_locals')
 const notFoundMiddleware = require('./middlewares/not_found')
