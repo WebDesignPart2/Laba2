@@ -33,24 +33,10 @@ app.set('view engine', 'pug')
 
 app.use(appLocalsStringsMiddleware)
 
-// налаштовуємо маршрутизацію
-app.get('/', function (_request, response) {
-  response.render('pages/index', { title: 'Home' })
-})
-
 //кастомні роути
-app.get('/port', function (_request, response) {
-  response.render('pages/port', { title: 'Port' })
-})
-app.get('/ship', function (_request, response) {
-  response.render('pages/ship', { title: 'Ships' })
-})
-app.get('/pier', function (_request, response) {
-  response.render('pages/pier', { title: 'Piers' })
-})
-app.get('/shipInPort', function (_request, response) {
-  response.render('pages/shipInPort', { title: 'ShipInPort' })
-})
+const indexRoutes = require('./routes/index')
+// налаштовуємо маршрутизацію
+app.get('/', indexRoutes)
 
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
