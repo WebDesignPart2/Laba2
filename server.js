@@ -2,6 +2,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const flash = require('connect-flash')
 const config = require('./config')
+const session = require('express-session')
 
 const appLocalsStringsMiddleware = require('./middlewares/app_locals')
 const notFoundMiddleware = require('./middlewares/not_found')
@@ -14,6 +15,12 @@ const app = express()
 // встановлюємо директорію для віддачі статичного контенту (каталог проекту)
 app.use(express.static(__dirname))
 
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 app.use(flash())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
